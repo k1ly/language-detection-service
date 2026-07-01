@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env*
+
+# Build
+dist/
+*.tsbuildinfo
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data
+data/
