@@ -1,6 +1,6 @@
 import { PoolClient } from 'pg';
 import { withTransaction } from '~/database';
-import { getTextLanguages } from '~/language';
+import { detectTextLanguages } from '~/language';
 import { Post } from './interfaces';
 import { readBatch } from './read-batch';
 import { updateBatch } from './update-batch';
@@ -18,7 +18,8 @@ export const addLanguagesToDB = async (client: PoolClient): Promise<void> => {
 
       const updates = posts.map((post) => ({
         id: post.id,
-        languages: post.body ? getTextLanguages(post.body) : null,
+        languages:
+          post.body ? detectTextLanguages(post.body, false).map(({ language }) => language) : null,
       }));
 
       await withTransaction(client, () => updateBatch(client, updates));

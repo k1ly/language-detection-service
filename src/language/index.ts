@@ -1,1 +1,1 @@
-export * from './language-api';
+export * from './detect-text-languages';

@@ -1,0 +1,26 @@
+import { detectAll } from 'tinyld';
+import { getScriptRatio } from '../utils';
+
+const CYRILLIC_LANGUAGES = new Set(['ru', 'uk', 'bg', 'sr', 'mk', 'be', 'kk', 'mn']);
+
+export const getSuspiciousHiReplacement = (
+  text: string,
+  candidates: ReturnType<typeof detectAll>,
+): ReturnType<typeof detectAll>[number] | null => {
+  const best = candidates[0];
+  const second = candidates[1];
+
+  if (!best || best.lang !== 'hi' || !second) {
+    return null;
+  }
+
+  if (getScriptRatio(text, 'Cyrillic') > 0.8 && CYRILLIC_LANGUAGES.has(second.lang)) {
+    return second;
+  }
+
+  if (getScriptRatio(text, 'Latin') > 0.8 && second.lang === 'en') {
+    return second;
+  }
+
+  return null;
+};
