@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2025",
+    "module": "CommonJS",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "types": ["node"],
+    "rootDir": "src",
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "declaration": true,
+    "incremental": true,
+    "sourceMap": true
+  },
+  "exclude": ["node_modules", "dist"]
+}
