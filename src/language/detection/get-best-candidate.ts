@@ -1,4 +1,10 @@
-import { getSuspiciousHiReplacement, getTopMargin, hasClearWinner } from '../heuristics';
+import {
+  getSpanishReplacement,
+  getSuspiciousHiReplacement,
+  getSuspiciousHuReplacement,
+  getTopMargin,
+  hasClearWinner,
+} from '../heuristics';
 import { LanguageCandidate } from '../interfaces';
 
 const MIN_ACCURACY = 0.15;
@@ -14,6 +20,18 @@ export const getBestCandidate = (
 
   if (replacement) {
     return replacement;
+  }
+
+  const spanishReplacement = getSpanishReplacement(text, candidates);
+
+  if (spanishReplacement) {
+    return spanishReplacement;
+  }
+
+  const huReplacement = getSuspiciousHuReplacement(text, candidates);
+
+  if (huReplacement) {
+    return huReplacement;
   }
 
   const best = candidates[0];
