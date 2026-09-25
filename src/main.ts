@@ -1,11 +1,12 @@
 import { config } from 'dotenv';
 import { mkdirSync } from 'fs';
 import { join } from 'path';
-import { addLanguagesToFile } from './posts';
+import { getClient, registerClient } from './database';
+import { addLanguagesToDB, addLanguagesToFile } from './posts';
 
 config();
 
-const main = (): void => {
+const main = async () => {
   const dataPath = process.env.DATA_PATH;
 
   if (!dataPath) {
@@ -15,6 +16,10 @@ const main = (): void => {
   mkdirSync(dataPath, { recursive: true });
 
   addLanguagesToFile(join(dataPath, 'posts.json'));
+
+  await registerClient(process.env.PG_POSTS_DB_NAME!);
+
+  addLanguagesToDB(getClient(process.env.PG_POSTS_DB_NAME!));
 };
 
 main();

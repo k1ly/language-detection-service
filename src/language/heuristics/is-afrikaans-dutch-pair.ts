@@ -1,6 +1,6 @@
-import { detectAll } from 'tinyld';
+import { LanguageCandidate } from '../interfaces';
 
-export const isAfrikaansDutchPair = (candidates: ReturnType<typeof detectAll>): boolean => {
+export const isAfrikaansDutchPair = (candidates: LanguageCandidate[]): boolean => {
   const best = candidates[0];
   const second = candidates[1];
 

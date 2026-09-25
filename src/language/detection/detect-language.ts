@@ -11,6 +11,10 @@ export const detectLanguage = (text: string): Language | null => {
 
   const candidates = detectAll(text);
 
+  if (candidates.length === 0) {
+    return null;
+  }
+
   const candidate = getBestCandidate(text, candidates);
 
   if (!candidate) {

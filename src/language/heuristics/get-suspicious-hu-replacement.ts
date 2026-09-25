@@ -1,5 +1,5 @@
 import { LanguageCandidate } from '../interfaces';
-import { getScriptRatio } from '../utils';
+import { getScriptRatio } from './get-script-ratio';
 import { hasHungarianMarkers } from './has-hungarian-markers';
 
 const MIN_EN_ACCURACY = 0.1;

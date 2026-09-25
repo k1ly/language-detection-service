@@ -16,10 +16,10 @@ export const getBestCandidate = (
   text: string,
   candidates: LanguageCandidate[],
 ): LanguageCandidate | null => {
-  const replacement = getSuspiciousHiReplacement(text, candidates);
+  const hiReplacement = getSuspiciousHiReplacement(text, candidates);
 
-  if (replacement) {
-    return replacement;
+  if (hiReplacement) {
+    return hiReplacement;
   }
 
   const spanishReplacement = getSpanishReplacement(text, candidates);

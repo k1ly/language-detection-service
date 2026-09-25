@@ -1,6 +1,6 @@
-import { detectAll } from 'tinyld';
+import { LanguageCandidate } from '../interfaces';
 
-export const getTopMargin = (candidates: ReturnType<typeof detectAll>): number => {
+export const getTopMargin = (candidates: LanguageCandidate[]): number => {
   const best = candidates[0];
   const second = candidates[1];
 

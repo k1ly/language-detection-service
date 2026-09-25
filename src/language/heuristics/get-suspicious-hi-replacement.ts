@@ -1,12 +1,12 @@
-import { detectAll } from 'tinyld';
-import { getScriptRatio } from '../utils';
+import { LanguageCandidate } from '../interfaces';
+import { getScriptRatio } from './get-script-ratio';
 
 const CYRILLIC_LANGUAGES = new Set(['ru', 'uk', 'bg', 'sr', 'mk', 'be', 'kk', 'mn']);
 
 export const getSuspiciousHiReplacement = (
   text: string,
-  candidates: ReturnType<typeof detectAll>,
-): ReturnType<typeof detectAll>[number] | null => {
+  candidates: LanguageCandidate[],
+): LanguageCandidate | null => {
   const best = candidates[0];
   const second = candidates[1];
 

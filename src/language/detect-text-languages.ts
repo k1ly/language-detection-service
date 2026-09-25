@@ -11,5 +11,5 @@ export const detectTextLanguages = (text: string, split = true): Language[] => {
 
   const segments = split ? splitText(preparedText) : [preparedText];
 
-  return segments.map(detectLanguage).filter((language): language is Language => language !== null);
+  return segments.map(detectLanguage).filter((language) => language !== null);
 };
